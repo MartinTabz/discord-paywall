@@ -40,14 +40,13 @@ const handler = async (req, res) => {
 				.eq('stripe_customer_id', event.data.object.customer);
 			break;
 		case 'customer.subscription.deleted':
-			const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID);
 			const { data: profile } = await supabase
 				.from('profile')
 				.select('discord_id')
 				.eq('stripe_customer_id', event.data.object.customer)
 				.single();
-			const member = guild.members.cache.get(profile.discord_id);
-
+			const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+			const member = client.users.fetch(profile.discord_id);
 			const subscribedRole = guild.roles.cache.find(
 				(role) => role.id == '1096779979758510151'
 			);
