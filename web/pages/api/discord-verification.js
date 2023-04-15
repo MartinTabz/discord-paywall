@@ -15,7 +15,6 @@ const handler = async (req, res) => {
 			.select('subscribed')
 			.eq('discord_id', userid)
          .single();
-         console.log(profile);
 		if (profile) {
 			return res
 				.status(200)
