@@ -11,6 +11,7 @@
   "dependencies": {
     "@stripe/stripe-js": "^1.52.1",
     "@supabase/supabase-js": "^2.19.0",
+    "discord.js": "^14.9.0",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "micro": "^10.0.1",

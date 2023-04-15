@@ -29,7 +29,7 @@ client.on('messageCreate', async (message) => {
 		);
 
 		const embed = new EmbedBuilder()
-			.setColor('Green')
+			.setColor('Blue')
 			.setTitle('Click to Verify')
 			.setDescription(
 				'Click the button below to verify if your account is subscribed'
@@ -73,12 +73,16 @@ client.on('messageCreate', async (message) => {
 					ephemeral: true,
 				});
 			} else if (exist && subscribed) {
-				//Desired role id: 1096779979758510151
-				console.log(i);
+            const success = new EmbedBuilder()
+					.setColor('Green')
+					.setTitle('Successfully Verified')
 				await i.reply({
-					content: "Successfuly verified",
+					embeds: [success],
 					ephemeral: true,
 				});
+            var role = i.guild.roles.cache.find(role => role.id == "1096779979758510151");
+            console.log(role);
+            i.member.roles.add(role);
 			} else {
 				const link = new ActionRowBuilder().addComponents(
 					new ButtonBuilder()
