@@ -30,7 +30,7 @@ const handler = async (req, res) => {
 			break;
 		case 'customer.subscription.deleted':
 			await supabase
-				.from('profil')
+				.from('profile')
 				.update({ subscribed: false, in_jail: true  })
 				.eq('stripe_customer_id', event.data.object.customer);
 			break;
